@@ -27,17 +27,18 @@ ForEach ($RemoteComputers in Get-Content SQL_Server_SVC_Account_Add_Group-ACU_Se
 		Write-Output $FullPath
 
 		$acl=Get-Acl -Path $fullPath
-		$permission="ACU\svcentdb","Read","Allow"
+		$permission="Domain\user","Read","Allow"
 		$accessRule=new-object System.Security.AccessControl.FileSystemAccessRule $permission
 		$acl.AddAccessRule($accessRule)
 		Set-Acl $fullPath $acl
-
+<#
+## Any additional accounts, you can copy the below block
 		$acl=Get-Acl -Path $fullPath
-		$permission="ACU\svcuatdb","Read","Allow"
+		$permission="Domain\user","Read","Allow"
 		$accessRule=new-object System.Security.AccessControl.FileSystemAccessRule $permission
 		$acl.AddAccessRule($accessRule)
 		Set-Acl $fullPath $acl
-
+#>
     }
 
     Invoke-Command -ComputerName $server -Credential $cred -ScriptBlock $SB
