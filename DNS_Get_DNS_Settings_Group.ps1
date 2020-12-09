@@ -4,13 +4,15 @@
 .DESCRIPTION
     
 .EXAMPLE
-    PS C:\> <example usage>
-    Explanation of what the example does
+    DNS_Get_DNS_Settings_Group.ps1
 .NOTES
-Version Modifications																			  
-1.2 - Code set to input a text file and parse each line item									  
-1.1 - Code set to take in an array string within the code										  
-1.0 - Code set to take in an individual string as input									      																				
+Future modifications
+-add ability to state txt file of server names
+-add param value for computer input
+-add validate commands to make sure no wrong info is etnered
+-change this script into a function 
+.LINK
+https://github.com/mgonza14/WindowsServers/blob/master/DNS_Get_DNS_Settings_Group.ps1								      																				
 #>
 
 ForEach ($RemoteComputers in Get-Content DNS_Get_DNS_Settings_Group.txt) {
